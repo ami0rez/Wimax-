@@ -1,0 +1,93 @@
+.button {
+    -fx-background-radius: 0,0,0,0;
+    -fx-text-fill: white;
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    
+    -fx-background-insets:  0 0 0 0,0 0 1 0, 0 0 2 0,0 0 4 0;
+    -fx-background-color:  
+        linear-gradient(from 0% 93% to 0% 100%, #ffffff 0%, #ffffff 100%),
+        radial-gradient(center 50% 50%, radius 100%, #1284e8, #28a4e8);
+}
+.button:hover{
+    
+    -fx-text-fill: linear-gradient(white, #f0f2f5);
+    
+    -fx-background-insets: 0,0 0 4 0, 0 0 5 0, 0 0 6 0;
+    -fx-background-color: 
+        radial-gradient(center 50% 50%, radius 100%, #004F61, #004F61);
+}
+.text-field {
+    -fx-background-color: #a9a9a9 , white , white;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 4 -1;
+}
+
+.text-field:focused {
+    -fx-background-color: #66B6FF , white , white;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 4 -1;
+}
+
+
+.combo-box .list-cell 
+{
+    
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+}
+
+.combo-box-popup .list-view 
+{
+    -fx-background-color: white, white;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+}    
+
+.combo-box-popup .list-view .list-cell 
+{
+    -fx-padding: 4 0 4 5;
+
+    /* No alternate highlighting */
+    -fx-background-color: white;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover 
+{
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover 
+{
+    -fx-background-color: white;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.combo-box-base  
+{
+    -fx-skin: "com.sun.javafx.scene.control.skin.ComboBoxBaseSkin";
+    -fx-background-color: white, white, white, white;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}
+
+.combo-box-base:hover
+{
+    -fx-color: -fx-hover-base;
+}
+
+.combo-box-base:showing 
+{
+    -fx-background: #004F61;
+}
+
+.combo-box-base:focused {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 6.4, 4, 5, 3;
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-text-fill: white;
+}
+
+.combo-box-base:disabled {
+    -fx-opacity: .4;
+}

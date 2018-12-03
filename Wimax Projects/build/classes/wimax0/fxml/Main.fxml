@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="1043.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wimax0.controllers.Controller">
+    <children>
+      <VBox layoutY="60.0" prefHeight="620.0" prefWidth="250.0" style="-fx-background-color: #28A4E8;">
+         <children>
+            <Button fx:id="menu_inputs" mnemonicParsing="false" onAction="#handleClicks" prefHeight="100.0" prefWidth="250.0" text="Inputs">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font></Button>
+            <Button fx:id="menu_results" mnemonicParsing="false" onAction="#handleClicks" prefHeight="100.0" prefWidth="250.0" text="Results">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font></Button>
+            <Button fx:id="menu_cycles" mnemonicParsing="false" onAction="#handleClicks" prefHeight="100.0" prefWidth="250.0" text="Cycles">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font></Button>
+            <Button fx:id="menu_user" mnemonicParsing="false" onAction="#handleClicks" prefHeight="100.0" prefWidth="253.0" text="User">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="menu_compare" mnemonicParsing="false" onAction="#handleClicks" prefHeight="100.0" prefWidth="250.0" text="About">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font></Button>
+         </children>
+      </VBox>
+      <StackPane layoutX="251.0" layoutY="60.0" prefHeight="620.0" prefWidth="801.0">
+         <children>
+            <Pane fx:id="pane_results" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <HBox prefHeight="620.0" prefWidth="800.0">
+                     <children>
+                        <VBox prefHeight="620.0" prefWidth="216.0">
+                           <children>
+                              <HBox prefHeight="49.0" prefWidth="181.0">
+                                 <children>
+                                    <ComboBox fx:id="res_combox" prefHeight="42.0" prefWidth="156.0" />
+                                    <Button mnemonicParsing="false" onAction="#AddColumn" prefHeight="41.0" prefWidth="25.0" text="+" />
+                                 </children>
+                              </HBox>
+                              <ListView fx:id="res_list" onMouseClicked="#removeColumn" prefHeight="591.0" prefWidth="191.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="620.0" prefWidth="634.0">
+                           <children>
+                              <TableView fx:id="res_table" prefHeight="402.0" prefWidth="609.0">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </VBox.margin>
+                              </TableView>
+                              <LineChart fx:id="res_line">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </VBox.margin>
+                              </LineChart>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <Pane fx:id="pane_cycle" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <HBox alignment="CENTER_LEFT" layoutX="-2.0" prefHeight="44.0" prefWidth="801.0">
+                     <children>
+                        <Label text="Id Of Cycle">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="cyc_val" prefHeight="31.0" prefWidth="124.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button fx:id="cyc_action" mnemonicParsing="false" onAction="#showCycle" text="See Data">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <VBox layoutY="51.0" prefHeight="571.0" prefWidth="801.0">
+                     <children>
+                        <HBox prefHeight="223.0" prefWidth="801.0">
+                           <children>
+                              <PieChart fx:id="cyc_pie_stat" prefHeight="241.0" prefWidth="288.0" title="New Entries" />
+                              <PieChart fx:id="cyc_pie_entries" prefHeight="234.0" prefWidth="267.0" title="Entries After Adding BackOff" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="67.0" prefWidth="801.0">
+                           <children>
+                              <Label text="Values After">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ComboBox fx:id="cyc_combox" prefWidth="150.0">
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                              <Button mnemonicParsing="false" onAction="#updatePies" text="Get">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="241.0" prefWidth="801.0">
+                           <children>
+                              <PieChart fx:id="cyc_col_be" prefHeight="241.0" prefWidth="288.0" title="BE" />
+                              <PieChart fx:id="cyc_col_rt" prefHeight="234.0" prefWidth="267.0" title="RT" />
+                              <PieChart fx:id="cyc_col_nrt" prefHeight="234.0" prefWidth="267.0" title="NRT" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane fx:id="pane_compare" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <VBox prefHeight="620.0" prefWidth="801.0">
+                     <children>
+                        <Label id="label_wimax" contentDisplay="CENTER" prefHeight="50.0" prefWidth="801.0" text="About Wimax" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Pane prefHeight="1.0" prefWidth="801.0" style="-fx-background-color: #24353D;" />
+                        <Label prefHeight="566.0" prefWidth="665.0" text="  WiMAX is a wireless communications standard designed for creating metropolitan &#10;area networks (MANs). It is similar to the Wi-Fi standard, but supports a far &#10;greater range of coverage. While a Wi-Fi signal can cover a radius of several &#10;hundred feet, a fixed WiMAX station can cover a range of up to 30 miles. &#10;Mobile WiMAX stations can broadcast up to 10 miles.&#10;&#10;   While Wi-Fi is a good wireless Internet solution for home networks and coffee &#10;shops, it is impractical for larger areas. In order to cover a large area, &#10;multiple Wi-Fi repeaters must be set up at consistent intervals. For areas &#10;that span several miles, this is a rather inefficient method to provide wireless&#10;access and typically requires lots of maintenance. WiMAX, on the other hand, &#10;can cover several miles using a single station. This makes it much easier to &#10;maintain and offers more reliable coverage.&#10;&#10;   WiMAX is also known by its technical name, &quot;IEEE 802.16,&quot; which is similar to&#10;Wi-Fi's technical specification of 802.11. It is considered the second generation&#10;broadband wireless access (BWA) standard and will most likely be used along with &#10;Wi-Fi, rather than replace it. Since WiMAX has such as large signal range, it will&#10;potentially be used to provide wireless Internet access to entire cities and other&#10;large areas. In fact, some proponents of WiMAX predict it will eventually spread &#10;Internet access to all parts of the globe&#10;">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane fx:id="pane_user" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="620.0" prefWidth="800.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0">
+                           <children>
+                              <Label prefHeight="27.0" prefWidth="54.0" text="Cycle">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="user_inp_cycle">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Label prefHeight="27.0" prefWidth="47.0" text="User">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="user_inp_id">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Button mnemonicParsing="false" onAction="#getUser" text="Get" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="user_class" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="user_maxcol" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="user_cdma" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="user_taille" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="user_tailec" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="user_sejours" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane fx:id="pane_inputs" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <VBox prefHeight="612.0" prefWidth="801.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="124.0" prefWidth="800.0" text="Welcome To wimax Simulation, please fill the inputs bellow" textFill="#14158d">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="429.0" prefWidth="801.0">
+                           <children>
+                              <VBox prefHeight="100.0" prefWidth="395.0">
+                                 <children>
+                                    <Label prefHeight="40.0" prefWidth="161.0" text="Number Of Cycles">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="input_cycles" text="10">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label prefHeight="40.0" prefWidth="154.0" text="Number Of Users">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="input_users" text="100">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label prefHeight="40.0" prefWidth="171.0" text="Value Of Resources">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="input_resources" text="950">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label prefHeight="40.0" prefWidth="103.0" text="Size Of BE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="input_be" text="100">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label prefHeight="40.0" prefWidth="124.0" text="Size Of RT">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="input_rt" text="10">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label prefHeight="40.0" prefWidth="163.0" text="Size Of NRT">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="input_nrt" text="100">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="100.0" prefWidth="404.0">
+                                 <children>
+                                    <Label prefHeight="40.0" prefWidth="171.0" text="Delay Of RT">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="input_delay_rt" text="9">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label prefHeight="40.0" prefWidth="189.0" text="Range Of BE CDMA">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox prefHeight="33.0" prefWidth="394.0">
+                                       <children>
+                                          <TextField fx:id="inp_be_min" prefHeight="25.0" prefWidth="203.0" promptText="Min" text="1">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="inp_be_max" prefHeight="25.0" prefWidth="175.0" promptText="Max" text="40">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                    <Label prefHeight="40.0" prefWidth="189.0" text="Range Of RT CDMA">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox prefHeight="33.0" prefWidth="394.0">
+                                       <children>
+                                          <TextField fx:id="inp_rt_min" prefHeight="25.0" prefWidth="203.0" promptText="Min" text="41">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="inp_rt_max" prefHeight="25.0" prefWidth="175.0" promptText="Max" text="80">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                    <Label prefHeight="40.0" prefWidth="199.0" text="Range Of NRT CDMA">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox prefHeight="33.0" prefWidth="394.0">
+                                       <children>
+                                          <TextField fx:id="inp_nrt_min" prefHeight="25.0" prefWidth="203.0" promptText="Min" text="81">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="inp_nrt_max" prefHeight="25.0" prefWidth="175.0" promptText="Max" text="120">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="801.0">
+                           <children>
+                              <Button fx:id="btn_start_simulation" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleStartSimulation" style="-fx-background-color: #14A5BD; -fx-focus-traversable: 1496AC;" text="Start Simulation">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+      <HBox layoutX="38.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="60.0" prefWidth="1052.0" spacing="10.0" style="-fx-background-color: #1284E8;" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label onMouseClicked="#handleClose" prefHeight="30.0" prefWidth="18.0" text="x" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="60.0" prefWidth="785.0" />
+            <Pane prefHeight="60.0" prefWidth="224.0">
+               <children>
+                  <Label fx:id="title_id" layoutX="77.0" layoutY="10.0" text="WiMAX" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </HBox>
+    </children>
+</AnchorPane>
